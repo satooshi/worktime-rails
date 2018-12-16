@@ -34,7 +34,7 @@ RUN apk upgrade --no-cache && \
     bundle config --global build.nokogiri --use-system-libraries && \
     gem install bundler && \
     bundle && \
-    rm -rf ~/.gem \
+    rm -rf ~/.gem && \
     apk del build-dependencies
 
 EXPOSE 3000
