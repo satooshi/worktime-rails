@@ -2,7 +2,7 @@ FROM ruby:2.5.3-alpine3.8
 
 ENV APP_ROOT=/app
 ENV BUNDLE_JOBS=4
-ENV BUNDLE_PATH=$APP_ROOT/vendor/bundle
+ENV BUNDLE_PATH=/bundle
 
 RUN mkdir $APP_ROOT \
   && mkdir -p $BUNDLE_PATH \
@@ -38,8 +38,6 @@ RUN apk upgrade --no-cache && \
     apk del build-dependencies
 
 EXPOSE 3000
-
-RUN bundle exec rails db:create db:migrate
 
 COPY . /$APP_ROOT
 CMD /$APP_ROOT/start.sh
