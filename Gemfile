@@ -1,0 +1,48 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.5.3'
+
+# rails gems
+gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
+gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'pg', '>= 0.18', '< 2.0'
+gem 'puma', '~> 3.11'
+gem 'rails', '~> 5.2.2'
+
+# rails optional gems
+# gem 'capistrano-rails', group: :development # Use Capistrano for deployment
+# gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# gem 'mini_magick', '~> 4.8' # Use ActiveStorage variant
+# gem 'redis', '~> 4.0' # Use Redis adapter to run Action Cable in production
+# gem 'web-console', '>= 3.3.0', group: :development # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+
+# project gems
+gem 'devise'
+gem 'devise_invitable'
+gem 'devise-bootstrap-views'
+gem 'cancancan'
+
+group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pry-rails'
+  gem 'pry-remote'
+end
+
+group :development do
+  gem 'annotate'
+  gem 'bullet'
+  gem 'guard'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rspec-rails'
+  gem 'rspec'
+  gem 'rubocop', require: false
+  gem 'spring-commands-rspec'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring'
+end
+
+group :test do
+  gem 'test-prof' # enable let_it_be
+end
