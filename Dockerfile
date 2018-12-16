@@ -16,14 +16,16 @@ COPY Gemfile.lock $APP_ROOT
 
 RUN apk upgrade --no-cache && \
     apk add --update --no-cache \
+      # required by nokogiri
+      libxslt-dev \
       postgresql-client \
+      rsync \
       tzdata && \
     apk add --update --no-cache --virtual=build-dependencies \
       build-base \
       curl-dev \
       linux-headers \
       libxml2-dev \
-      libxslt-dev \
       postgresql-dev \
       ruby-dev \
       yaml-dev \
