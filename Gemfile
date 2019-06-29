@@ -19,9 +19,8 @@ gem 'rails', '~> 5.2.2'
 
 # project gems
 gem 'devise'
-gem 'devise_invitable'
 gem 'devise-bootstrap-views'
-gem 'cancancan'
+gem 'devise_invitable'
 
 group :development, :test do
   gem 'factory_bot_rails'
@@ -35,12 +34,11 @@ group :development do
   gem 'bullet'
   gem 'guard'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rspec-rails'
   gem 'rspec'
-  gem 'rubocop', require: false
+  gem 'rspec-rails'
+  gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'spring'
 end
 
 group :test do
