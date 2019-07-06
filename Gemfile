@@ -27,15 +27,21 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-remote'
+  # gem 'pry-stack_explorer'
 end
 
 group :development do
+  gem 'activerecord-cause'
   gem 'annotate'
   gem 'bullet'
-  gem 'guard'
+  gem 'guard-rspec', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   gem 'sorbet'
   gem 'sorbet-runtime'
   gem 'spring'
@@ -44,5 +50,6 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matcher'
   gem 'test-prof' # enable let_it_be
 end
