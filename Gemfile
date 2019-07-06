@@ -39,9 +39,11 @@ group :development do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'rubocop-i18n'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  # gem 'simplecov'
   gem 'sorbet'
   gem 'sorbet-runtime'
   gem 'spring'
@@ -50,6 +52,6 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matcher'
+  gem 'shoulda-matchers'
   gem 'test-prof' # enable let_it_be
 end

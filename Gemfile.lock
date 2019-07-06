@@ -33,6 +33,8 @@ GEM
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
       arel (>= 9.0)
+    activerecord-cause (0.7.0)
+      activerecord (>= 4)
     activestorage (5.2.3)
       actionpack (= 5.2.3)
       activerecord (= 5.2.3)
@@ -46,6 +48,7 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 13.0)
     arel (9.0.0)
+    ast (2.4.0)
     bcrypt (3.1.13)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
@@ -94,8 +97,14 @@ GEM
       pry (>= 0.9.12)
       shellany (~> 0.0)
       thor (>= 0.18.1)
+    guard-compat (1.2.1)
+    guard-rspec (4.7.3)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -122,6 +131,9 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    parallel (1.17.0)
+    parser (2.6.3.0)
+      ast (~> 2.4.0)
     pastel (0.7.3)
       equatable (~> 0.6)
       tty-color (~> 0.5)
@@ -162,6 +174,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
@@ -190,8 +203,27 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
+    rubocop (0.72.0)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.6)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-i18n (2.0.0)
+      rubocop (~> 0.51)
+    rubocop-performance (1.4.0)
+      rubocop (>= 0.71.0)
+    rubocop-rails (2.2.0)
+      rack (>= 1.1)
+      rubocop (>= 0.72.0)
+    rubocop-rspec (1.33.0)
+      rubocop (>= 0.60.0)
+    ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     shellany (0.0.1)
+    shoulda-matchers (4.1.0)
+      activesupport (>= 4.2.0)
     slop (3.6.0)
     sorbet (0.4.4356)
       sorbet-static (= 0.4.4356)
@@ -241,6 +273,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-cause
   annotate
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
@@ -250,7 +283,7 @@ DEPENDENCIES
   devise_invitable
   factory_bot_rails
   faker
-  guard
+  guard-rspec
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   pry-rails
@@ -259,6 +292,12 @@ DEPENDENCIES
   rails (~> 5.2.2)
   rspec
   rspec-rails
+  rubocop
+  rubocop-i18n
+  rubocop-performance
+  rubocop-rails
+  rubocop-rspec
+  shoulda-matchers
   sorbet
   sorbet-runtime
   spring
