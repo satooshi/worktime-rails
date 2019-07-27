@@ -12,11 +12,17 @@ require:
   - rubocop-rails
   - rubocop-i18n
 
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*.rb
+
 Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
 
 # rails-i18n-style checking
 RailsI18n:
