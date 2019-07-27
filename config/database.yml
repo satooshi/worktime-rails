@@ -8,6 +8,9 @@ default: &default
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   # url: <%= ENV['DATABASE_URL'] %>
+  collation: C
+  ctype: C
+  template: template0
 
 development:
   <<: *default
