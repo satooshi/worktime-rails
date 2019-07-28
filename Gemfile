@@ -47,7 +47,6 @@ group :development do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  # gem 'simplecov'
   gem 'sorbet'
   gem 'sorbet-runtime'
   gem 'spring'
@@ -58,5 +57,6 @@ end
 group :test do
   gem 'rspec'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
   gem 'test-prof' # enable let_it_be
 end
