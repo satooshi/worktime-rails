@@ -1,0 +1,2 @@
+class BreakTime < TimeRecord
+end
