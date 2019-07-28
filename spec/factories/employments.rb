@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :time_record do
+  factory :employment do
   end
 end

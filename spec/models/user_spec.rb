@@ -1,20 +1,27 @@
 require 'rails_helper'
 
-RSpec.describe AdminUser, type: :model do
+RSpec.describe User, type: :model do
   let(:params) {
     {
+      name: name,
       email: email,
       password: password,
     }
   }
+  let(:name) { 'Taro' }
   let(:email) { "#{SecureRandom.uuid}@example.com" }
   let(:password) { SecureRandom.uuid }
 
   describe '#valid?' do
-    subject { AdminUser.new(params) }
+    subject { User.new(params) }
 
     context 'with valid attributes' do
       it { should be_valid }
+    end
+
+    context 'without name' do
+      let(:name) { nil }
+      it { should be_invalid }
     end
 
     context 'without email' do
@@ -29,7 +36,7 @@ RSpec.describe AdminUser, type: :model do
   end
 
   describe '#save!' do
-    subject { AdminUser.new(params) }
+    subject { User.new(params) }
 
     before(:each) do
       should be_valid

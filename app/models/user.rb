@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :companies, through: :employments
   has_one :employment
   has_one :company, through: :employment
+
+  validates :name, presence: true
 end
