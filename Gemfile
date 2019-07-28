@@ -41,7 +41,6 @@ group :development do
   gem 'bullet'
   gem 'guard-rspec', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rspec'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-i18n'
@@ -57,6 +56,7 @@ group :development do
 end
 
 group :test do
+  gem 'rspec'
   gem 'shoulda-matchers'
   gem 'test-prof' # enable let_it_be
 end
