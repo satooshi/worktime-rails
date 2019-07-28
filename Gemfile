@@ -18,10 +18,14 @@ gem 'rails', '~> 5.2.2'
 # gem 'web-console', '>= 3.3.0', group: :development # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
 
 # project gems
-gem 'activeadmin'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise_invitable'
+
+# adtive admin gems
+gem 'activeadmin'
+gem 'execjs'
+gem 'therubyracer'
 
 group :development, :test do
   gem 'factory_bot_rails'
