@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(version: 2019_07_28_092158) do
     t.string "name", null: false
   end
 
-  create_table "employment", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "employments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "company_id", null: false
     t.uuid "user_id", null: false
-    t.index ["company_id", "user_id"], name: "index_employment_on_company_id_and_user_id", unique: true
-    t.index ["company_id"], name: "index_employment_on_company_id"
-    t.index ["user_id"], name: "index_employment_on_user_id"
+    t.index ["company_id", "user_id"], name: "index_employments_on_company_id_and_user_id", unique: true
+    t.index ["company_id"], name: "index_employments_on_company_id"
+    t.index ["user_id"], name: "index_employments_on_user_id"
   end
 
   create_table "time_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_092158) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "employment", "companies"
-  add_foreign_key "employment", "users"
-  add_foreign_key "time_records", "users"
+  add_foreign_key "employments", "companies", on_delete: :cascade
+  add_foreign_key "employments", "users", on_delete: :cascade
+  add_foreign_key "time_records", "users", on_delete: :cascade
 end
