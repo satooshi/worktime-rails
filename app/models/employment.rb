@@ -4,7 +4,7 @@ class Employment < ApplicationRecord
 
   validates :company, presence: true
   validates :user, presence: true
-  validate :company_user_must_be_unique
+  validate :employment_must_be_unique
 
   private
 
@@ -14,7 +14,7 @@ class Employment < ApplicationRecord
 
   # validations
 
-  def company_user_must_be_unique
+  def employment_must_be_unique
     return if company.nil?
     return if user.nil?
     return if persisted?
