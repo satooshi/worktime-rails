@@ -14,7 +14,7 @@ shared_examples 'a time record model' do
       }
     }
     let(:start_at) { Time.zone.now }
-    let(:end_at) { start_at + 1.hour }
+    let(:end_at) { Time.zone.now + 1.hour }
 
     context 'with valid attributes' do
       it { should be_valid }
