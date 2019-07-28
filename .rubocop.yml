@@ -40,6 +40,9 @@ Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
 
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
 # rails-i18n-style checking
 RailsI18n:
   Enabled: true
