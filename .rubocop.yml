@@ -17,6 +17,9 @@ AllCops:
     - db/schema.rb
     - db/migrate/*.rb
 
+Style/AsciiComments:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
@@ -28,6 +31,10 @@ Style/TrailingCommaInHashLiteral:
 
 Style/BlockDelimiters:
   EnforcedStyle: semantic
+
+Metrics/LineLength:
+  Exclude:
+    - db/**/*.rb
 
 Metrics/BlockLength:
   Exclude:
