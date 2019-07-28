@@ -31,8 +31,11 @@ Style/TrailingCommaInHashLiteral:
 
 Style/BlockDelimiters:
   EnforcedStyle: semantic
+  Exclude:
+    - spec/factories/**/*.rb
 
 Metrics/LineLength:
+  Max: 160
   Exclude:
     - db/**/*.rb
 
