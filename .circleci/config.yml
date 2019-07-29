@@ -34,9 +34,13 @@ jobs:
             docker --version
             docker-compose --version
       - run: mkdir tmp/coverage
-      - run: docker-compose -f docker-compose.ci.yml up -d
-      - run: docker-compose -f docker-compose.ci.yml exec rspec bin/rails db:setup
-      - run: docker-compose -f docker-compose.ci.yml exec rspec bundle exec rspec --format progress
+      - run:
+          name: test
+          command: |
+            docker-compose -f docker-compose.ci.yml up -d
+            docker-compose -f docker-compose.ci.yml exec rspec bin/rails db:setup
+            docker-compose -f docker-compose.ci.yml exec rspec bundle exec rspec --format progress
+            docker-compose -f docker-compose.ci.yml down
       # - run:
       #     name: install dependencies
       #     command: |
