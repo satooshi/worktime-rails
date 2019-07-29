@@ -28,6 +28,11 @@ jobs:
       #       # fallback to using the latest cache if no exact match is found
       #       - v1-dependencies-
 
+      - run:
+          name: versions
+          command: |
+            docker --version
+            docker-compose --version
       - run: mkdir tmp/coverage
       - run: docker-compose -f docker-compose.ci.yml up -d
       - run: docker-compose -f docker-compose.ci.yml exec rspec bin/rails db:setup
