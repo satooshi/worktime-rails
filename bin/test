@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bundle config path vendor/bundle
+env
 ls -l vendor/bundle
 bundle install
 bin/rails db:setup
