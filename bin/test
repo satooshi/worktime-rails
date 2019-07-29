@@ -1,4 +1,5 @@
 #!/bin/sh
 
+bundle install
 bin/rails db:setup
 bundle exec rspec --format progress
