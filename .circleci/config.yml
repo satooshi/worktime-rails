@@ -22,17 +22,17 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #       - v1-dependencies-{{ checksum "Gemfile.lock" }}
-      #       # fallback to using the latest cache if no exact match is found
-      #       - v1-dependencies-
-
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run:
-          name: versions
+          name: Versions
           command: |
             docker --version
             docker-compose --version
+            ruby --version
       - run: mkdir tmp/coverage
       - run:
           name: test
@@ -43,12 +43,10 @@ jobs:
       #     name: install dependencies
       #     command: |
       #       bundle install --jobs=4 --retry=3 --path vendor/bundle
-
-      # - save_cache:
-      #     paths:
-      #       - ./vendor/bundle
-      #     key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       # Database setup
       # - run: bundle exec rake db:setup
       # - run: bundle exec rake db:schema:load
