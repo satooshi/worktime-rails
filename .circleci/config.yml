@@ -40,6 +40,8 @@ jobs:
             bundle config path vendor/bundle
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec bin/test
+            ls -l vendor/bundle
+            ls -l tmp/coverage
       # - run:
       #     name: install dependencies
       #     command: |
