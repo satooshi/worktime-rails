@@ -33,10 +33,10 @@ jobs:
             docker --version
             docker-compose --version
             ruby --version
-      - run: mkdir tmp/coverage
       - run:
           name: test
           command: |
+            mkdir -p tmp/coverage
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec bin/test
       # - run:
