@@ -37,11 +37,8 @@ jobs:
       - run:
           name: test
           command: |
-            docker-compose -f docker-compose.ci.yml up --build -d
-            sleep 10
-            docker-compose -f docker-compose.ci.yml exec rspec bin/rails db:setup
-            docker-compose -f docker-compose.ci.yml exec rspec bundle exec rspec --format progress
-            docker-compose -f docker-compose.ci.yml down
+            docker-compose -f docker-compose.ci.yml build
+            docker-compose -f docker-compose.ci.yml run rspec bin/test
       # - run:
       #     name: install dependencies
       #     command: |
