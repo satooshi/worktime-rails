@@ -1,5 +1,5 @@
 #!/bin/sh
 
-bundle install
+bundle install --path vendor/bundle
 bin/rails db:setup
 bundle exec rspec --format progress
