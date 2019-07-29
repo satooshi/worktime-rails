@@ -38,7 +38,7 @@ jobs:
           name: test
           command: |
             docker-compose -f docker-compose.ci.yml up --build -d
-            sleep 3
+            sleep 10
             docker-compose -f docker-compose.ci.yml exec rspec bin/rails db:setup
             docker-compose -f docker-compose.ci.yml exec rspec bundle exec rspec --format progress
             docker-compose -f docker-compose.ci.yml down
