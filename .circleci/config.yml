@@ -40,9 +40,6 @@ jobs:
             ls -la
             ls -l vendor/bundle
             mkdir -p tmp/coverage
-            bundle config path vendor/bundle
-            ls -la
-            cat .bundle/config
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec bin/test
             ls -l vendor/bundle
