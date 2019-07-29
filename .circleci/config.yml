@@ -37,6 +37,7 @@ jobs:
           name: test
           command: |
             pwd
+            ls -la
             ls -l vendor/bundle
             mkdir -p tmp/coverage
             bundle config path vendor/bundle
