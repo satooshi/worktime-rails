@@ -26,18 +26,19 @@ jobs:
             docker-compose --version
             ruby --version
       - run:
+          name: Load docker cache
           command: |
             set +o pipefail
             docker load -i ~/caches/images.tar | true
       - run:
-          name: test
+          name: Run test
           command: |
             mkdir -p tmp/coverage
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec bin/test
             sudo chown -R circleci:circleci vendor/bundle
       - run:
-          name: docker save
+          name: Save docker cache
           command: |
             mkdir -p ~/caches
             docker save $(docker images -q) -o ~/caches/images.tar
