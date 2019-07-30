@@ -24,9 +24,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v3-dependencies-{{ checksum "Gemfile.lock" }}
+            - v4-dependencies-{{ checksum "Gemfile.lock" }}
             # fallback to using the latest cache if no exact match is found
-            - v3-dependencies-
+            - v4-dependencies-
       - restore_cache:
           keys:
             - v1-docker-{{ .Branch }}-{{ checksum "docker-compose.ci.yml" }}-{{ checksum "docker/Dockerfile" }}
@@ -47,7 +47,7 @@ jobs:
             mkdir -p tmp/coverage
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec bin/test
-            sudo chown -R cirlcleci:circleci vendor/bundle
+            sudo chown -R circleci:circleci vendor/bundle
       - run:
           name: docker save
           command: |
@@ -61,7 +61,7 @@ jobs:
       #     command: |
       #       bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
-          key: v3-dependencies-{{ checksum "Gemfile.lock" }}
+          key: v4-dependencies-{{ checksum "Gemfile.lock" }}
           paths: ./vendor/bundle
       # Database setup
       # - run: bundle exec rake db:setup
