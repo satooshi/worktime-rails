@@ -47,6 +47,7 @@ jobs:
             mkdir -p tmp/coverage
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec bin/test
+            sudo chown -R cirlcleci:circleci vendor/bundle
       - run:
           name: docker save
           command: |
