@@ -55,8 +55,9 @@ group :development do
 end
 
 group :test do
+  # gem 'deep-cover', require: false
   gem 'rspec'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
   gem 'simplecov', require: false
-  gem 'test-prof' # enable let_it_be
+  gem 'test-prof', require: false # enable let_it_be
 end
