@@ -19,7 +19,12 @@ unless defined?(::Spring::Application)
     end
   end
   SimpleCov.coverage_dir(Rails.root.join('coverage'))
-  SimpleCov.formatter = Formatter
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+    [
+      Formatter,
+      SimpleCov::Formatter::HTMLFormatter
+    ]
+  )
   SimpleCov.start do
     load_profile 'test_frameworks'
 
