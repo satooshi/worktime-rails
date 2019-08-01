@@ -49,7 +49,7 @@ jobs:
           key: v4-dependencies-{{ checksum "Gemfile.lock" }}
           paths: ./vendor/bundle
       - store_test_results:
-          path: tmp/coverage
+          path: coverage
       - store_artifacts:
-          path: tmp/coverage
+          path: coverage
           destination: coverage
