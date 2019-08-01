@@ -1,7 +1,3 @@
-require 'simplecov'
-SimpleCov.coverage_dir('tmp/coverage')
-SimpleCov.start 'rails'
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -10,8 +6,38 @@ require File.expand_path('../../config/environment', __FILE__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-
 require 'support/factory_bot.rb'
+require 'test_prof/recipes/rspec/let_it_be'
+require 'shoulda-matchers'
+
+unless defined?(::Spring::Application)
+  require 'simplecov'
+  class Formatter
+    def format(result)
+      formatter = SimpleCov::Formatter::SimpleFormatter.new
+      puts formatter.format(result)
+    end
+  end
+  SimpleCov.coverage_dir(Rails.root.join('coverage'))
+  SimpleCov.formatter = Formatter
+  SimpleCov.start do
+    load_profile 'test_frameworks'
+
+    add_filter %r{^/config/}
+    add_filter %r{^/db/}
+
+    add_group 'Admin', 'app/admin'
+    add_group 'Controllers', 'app/controllers'
+    add_group 'Channels', 'app/channels'
+    add_group 'Models', 'app/models'
+    add_group 'Mailers', 'app/mailers'
+    add_group 'Helpers', 'app/helpers'
+    add_group 'Jobs', %w[app/jobs app/workers]
+    add_group 'Libraries', 'lib/'
+
+    track_files '{app,lib}/**/*.rb'
+  end
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
