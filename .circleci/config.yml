@@ -19,6 +19,9 @@ jobs:
           keys:
             - v4-dependencies-{{ checksum "Gemfile.lock" }}
             - v4-dependencies-
+      - docker/build:
+          dockerfile: docker/ci.Dockerfile
+          image: rspec
       # - restore_cache:
       #     keys:
       #       - v1-docker-{{ .Branch }}-{{ checksum "docker-compose.ci.yml" }}-{{ checksum "docker/Dockerfile" }}
@@ -36,19 +39,18 @@ jobs:
       #     command: |
       #       set +o pipefail
       #       sudo /usr/bin/docker load -i ~/caches/images.tar | true
-      - run:
-          name: Run test
-          command: |
-            mkdir -p coverage
-            docker-compose -f docker-compose.ci.yml build
-            docker-compose -f docker-compose.ci.yml up -d
-            sleep 5
-            docker-compose -f docker-compose.ci.yml exec rspec bin/test
-            docker-compose -f docker-compose.ci.yml ps
-            docker ps
-            docker cp repo_rspec_1:/usr/src/app/coverage ./coverage
-            docker-compose -f docker-compose.ci.yml down
-            sudo chown -R circleci:circleci vendor/bundle
+      # - run:
+      #     name: Run test
+      #     command: |
+      #       mkdir -p coverage
+      #       docker build
+      #       docker-compose -f docker-compose.ci.yml build
+      #       docker-compose -f docker-compose.ci.yml up -d
+      #       sleep 5
+      #       docker-compose -f docker-compose.ci.yml exec rspec bin/test
+      #       docker cp repo_rspec_1:/usr/src/app/coverage ./coverage
+      #       docker-compose -f docker-compose.ci.yml down
+      #       sudo chown -R circleci:circleci vendor/bundle
       # - run:
       #     name: Save docker cache
       #     command: |
