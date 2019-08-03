@@ -40,9 +40,9 @@ jobs:
           name: Run test
           command: |
             mkdir -p tmp/coverage
-            sudo docker ps
-            sudo /usr/bin/docker-compose -f docker-compose.ci.yml build
-            sudo /usr/bin/docker-compose -f docker-compose.ci.yml run rspec bin/test
+            # sudo docker ps
+            sudo /usr/bin/docker-compose -f docker-compose.ci.yml -H $DOCKER_HOST build
+            sudo /usr/bin/docker-compose -f docker-compose.ci.yml -H $DOCKER_HOST run rspec bin/test
             sudo chown -R circleci:circleci vendor/bundle
       - run:
           name: Save docker cache
