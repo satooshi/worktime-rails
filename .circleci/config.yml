@@ -42,6 +42,7 @@ jobs:
             mkdir -p coverage
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml up -d
+            sleep 5
             docker-compose -f docker-compose.ci.yml exec rspec bin/test
             docker-compose -f docker-compose.ci.yml ps
             docker ps
