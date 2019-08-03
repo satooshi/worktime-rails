@@ -9,7 +9,7 @@ services:
   rspec:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/ci.Dockerfile
     environment:
       RAILS_ENV: test
       DATABASE_NAME: worktime_test
@@ -19,8 +19,7 @@ services:
       DATABASE_USERNAME: postgres
       BUNDLE_APP_CONFIG: /usr/src/app/.bundle
       BUNDLE_PATH: /usr/src/app/vendor/bundle
-    volumes:
-      - ./:/usr/src/app
+    # volumes:
       # - ./app:/usr/src/app/app
       # - ./bin:/usr/src/app/bin
       # - ./config:/usr/src/app/config
