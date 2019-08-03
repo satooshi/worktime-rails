@@ -1,9 +1,11 @@
-# https://circleci.com/orbs/registry/orb/circleci/docker
+
 version: 2.1
+# https://circleci.com/orbs/registry/orb/circleci/docker
 orbs:
   docker: circleci/docker@0.5.13
 jobs:
   test-rails-api:
+    # https://circleci.com/orbs/registry/orb/circleci/docker#executors-docker
     executor:
       name: docker/docker
       tag: '3.6'
@@ -38,7 +40,7 @@ jobs:
           name: Run test
           command: |
             mkdir -p tmp/coverage
-            sudo dockerd
+            sudo docker ps
             sudo /usr/bin/docker-compose -f docker-compose.ci.yml build
             sudo /usr/bin/docker-compose -f docker-compose.ci.yml run rspec bin/test
             sudo chown -R circleci:circleci vendor/bundle
