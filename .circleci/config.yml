@@ -19,10 +19,10 @@ jobs:
           keys:
             - v4-dependencies-{{ checksum "Gemfile.lock" }}
             - v4-dependencies-
-      - restore_cache:
-          keys:
-            - v1-docker-{{ .Branch }}-{{ checksum "docker-compose.ci.yml" }}-{{ checksum "docker/Dockerfile" }}
-            - v1-docker-
+      # - restore_cache:
+      #     keys:
+      #       - v1-docker-{{ .Branch }}-{{ checksum "docker-compose.ci.yml" }}-{{ checksum "docker/Dockerfile" }}
+      #       - v1-docker-
       - run:
           name: Versions
           command: |
@@ -31,27 +31,26 @@ jobs:
             which docker-compose
             /usr/bin/docker --version
             /usr/bin/docker-compose --version
-      - run:
-          name: Load docker cache
-          command: |
-            set +o pipefail
-            sudo /usr/bin/docker load -i ~/caches/images.tar | true
+      # - run:
+      #     name: Load docker cache
+      #     command: |
+      #       set +o pipefail
+      #       sudo /usr/bin/docker load -i ~/caches/images.tar | true
       - run:
           name: Run test
           command: |
             mkdir -p tmp/coverage
-            # sudo docker ps
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec bin/test
             sudo chown -R circleci:circleci vendor/bundle
-      - run:
-          name: Save docker cache
-          command: |
-            mkdir -p ~/caches
-            sudo /usr/bin/docker save $(docker images -q) -o ~/caches/images.tar
-      - save_cache:
-          key: v1-docker-{{ .Branch }}-{{ checksum "docker-compose.ci.yml" }}-{{ checksum "docker/Dockerfile" }}
-          paths: ~/caches/images.tar
+      # - run:
+      #     name: Save docker cache
+      #     command: |
+      #       mkdir -p ~/caches
+      #       sudo /usr/bin/docker save $(docker images -q) -o ~/caches/images.tar
+      # - save_cache:
+      #     key: v1-docker-{{ .Branch }}-{{ checksum "docker-compose.ci.yml" }}-{{ checksum "docker/Dockerfile" }}
+      #     paths: ~/caches/images.tar
       - save_cache:
           key: v4-dependencies-{{ checksum "Gemfile.lock" }}
           paths: ./vendor/bundle
