@@ -43,6 +43,8 @@ jobs:
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec bin/test
             sudo chown -R circleci:circleci vendor/bundle
+            docker-compose -f docker-compose.ci.yml ps
+            docker ps
             docker cp worktime_rspec_1:/usr/src/app/coverage ./coverage
       # - run:
       #     name: Save docker cache
