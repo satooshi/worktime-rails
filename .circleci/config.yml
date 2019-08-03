@@ -23,14 +23,14 @@ jobs:
       #     keys:
       #       - v1-docker-{{ .Branch }}-{{ checksum "docker-compose.ci.yml" }}-{{ checksum "docker/Dockerfile" }}
       #       - v1-docker-
-      - run:
-          name: Versions
-          command: |
-            env | sort
-            which docker
-            which docker-compose
-            /usr/bin/docker --version
-            /usr/bin/docker-compose --version
+      # - run:
+      #     name: Versions
+      #     command: |
+      #       env | sort
+      #       which docker
+      #       which docker-compose
+      #       /usr/bin/docker --version
+      #       /usr/bin/docker-compose --version
       # - run:
       #     name: Load docker cache
       #     command: |
