@@ -22,26 +22,26 @@ jobs:
       - run:
           name: Versions
           command: |
-            docker --version
-            docker-compose --version
+            /usr/local/bin/docker --version
+            /usr/local/bin/docker-compose --version
       - run:
           name: Load docker cache
           command: |
             set +o pipefail
-            sudo docker load -i ~/caches/images.tar | true
+            sudo /usr/local/bin/docker load -i ~/caches/images.tar | true
       - run:
           name: Run test
           command: |
             mkdir -p tmp/coverage
-            sudo dockerd
-            sudo docker-compose -f docker-compose.ci.yml build
-            sudo docker-compose -f docker-compose.ci.yml run rspec bin/test
+            # sudo dockerd
+            sudo /usr/local/bin/docker-compose -f docker-compose.ci.yml build
+            sudo /usr/local/bin/docker-compose -f docker-compose.ci.yml run rspec bin/test
             sudo chown -R circleci:circleci vendor/bundle
       - run:
           name: Save docker cache
           command: |
             mkdir -p ~/caches
-            sudo docker save $(docker images -q) -o ~/caches/images.tar
+            sudo /usr/local/bin/docker save $(docker images -q) -o ~/caches/images.tar
       - save_cache:
           key: v1-docker-{{ .Branch }}-{{ checksum "docker-compose.ci.yml" }}-{{ checksum "docker/Dockerfile" }}
           paths: ~/caches/images.tar
