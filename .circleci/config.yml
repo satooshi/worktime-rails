@@ -41,8 +41,8 @@ jobs:
           command: |
             mkdir -p tmp/coverage
             # sudo docker ps
-            docker-compose -f docker-compose.ci.yml -H $DOCKER_HOST build
-            docker-compose -f docker-compose.ci.yml -H $DOCKER_HOST run rspec bin/test
+            docker-compose -f docker-compose.ci.yml build
+            docker-compose -f docker-compose.ci.yml run rspec bin/test
             sudo chown -R circleci:circleci vendor/bundle
       - run:
           name: Save docker cache
