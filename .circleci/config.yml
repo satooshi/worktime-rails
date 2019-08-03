@@ -39,13 +39,15 @@ jobs:
       - run:
           name: Run test
           command: |
-            mkdir -p tmp/coverage
+            mkdir -p coverage
             docker-compose -f docker-compose.ci.yml build
-            docker-compose -f docker-compose.ci.yml run rspec bin/test
-            sudo chown -R circleci:circleci vendor/bundle
+            docker-compose -f docker-compose.ci.yml up -d
+            docker-compose -f docker-compose.ci.yml exec rspec bin/test
             docker-compose -f docker-compose.ci.yml ps
             docker ps
-            docker cp worktime_rspec_1:/usr/src/app/coverage ./coverage
+            docker cp repo_rspec_1:/usr/src/app/coverage ./coverage
+            docker-compose -f docker-compose.ci.yml down
+            sudo chown -R circleci:circleci vendor/bundle
       # - run:
       #     name: Save docker cache
       #     command: |
