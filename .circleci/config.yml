@@ -25,9 +25,11 @@ jobs:
             env | sort
             which docker
             which docker-compose
+            ls -l /usr/bin
+            ls -l /usr/local/bin
             /usr/bin/docker --version
             /usr/bin/docker-compose --version
-            /usr/local/bin/docker-compose --version
+            # /usr/local/bin/docker-compose --version
       - run:
           name: Load docker cache
           command: |
