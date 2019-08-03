@@ -24,7 +24,6 @@ jobs:
           command: |
             docker --version
             docker-compose --version
-            ruby --version
       - run:
           name: Load docker cache
           command: |
