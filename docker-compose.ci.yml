@@ -20,26 +20,27 @@ services:
       BUNDLE_APP_CONFIG: /usr/src/app/.bundle
       BUNDLE_PATH: /usr/src/app/vendor/bundle
     volumes:
-      - ./app:/usr/src/app/app
-      - ./bin:/usr/src/app/bin
-      - ./config:/usr/src/app/config
-      - ./db:/usr/src/app/db
-      - ./lib:/usr/src/app/lib
-      - ./public:/usr/src/app/public
-      - ./sorbet:/usr/src/app/sorbet
-      - ./spec:/usr/src/app/spec
-      - ./storage:/usr/src/app/storage
-      - ./tmp/coverage:/usr/src/app/tmp/coverage
-      - ./tmp/test-results:/usr/src/app/tmp/test-results
-      - ./vendor:/usr/src/app/vendor
-      - ./.bundle:/usr/src/app/.bundle
-      - ./.rspec:/usr/src/app/.rspec
-      - ./.rubocop.yml:/usr/src/app/.rubocop.yml
-      - ./config.ru:/usr/src/app/config.ru
-      - ./Gemfile:/usr/src/app/Gemfile
-      - ./Gemfile.lock:/usr/src/app/Gemfile.lock
-      - ./Guardfile:/usr/src/app/Guardfile
-      - ./Rakefile:/usr/src/app/Rakefile
+      - ./:/usr/src/app
+      # - ./app:/usr/src/app/app
+      # - ./bin:/usr/src/app/bin
+      # - ./config:/usr/src/app/config
+      # - ./db:/usr/src/app/db
+      # - ./lib:/usr/src/app/lib
+      # - ./public:/usr/src/app/public
+      # - ./sorbet:/usr/src/app/sorbet
+      # - ./spec:/usr/src/app/spec
+      # - ./storage:/usr/src/app/storage
+      # - ./tmp/coverage:/usr/src/app/tmp/coverage
+      # - ./tmp/test-results:/usr/src/app/tmp/test-results
+      # - ./vendor:/usr/src/app/vendor
+      # - ./.bundle:/usr/src/app/.bundle
+      # - ./.rspec:/usr/src/app/.rspec
+      # - ./.rubocop.yml:/usr/src/app/.rubocop.yml
+      # - ./config.ru:/usr/src/app/config.ru
+      # - ./Gemfile:/usr/src/app/Gemfile
+      # - ./Gemfile.lock:/usr/src/app/Gemfile.lock
+      # - ./Guardfile:/usr/src/app/Guardfile
+      # - ./Rakefile:/usr/src/app/Rakefile
     depends_on:
       - pgdb
     command: ["bundle", "exec", "spring", "server"]
