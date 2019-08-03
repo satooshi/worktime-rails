@@ -11,6 +11,7 @@ jobs:
     steps:
       - checkout
       - docker/install-docker-tools
+      - setup_remote_docker
       - restore_cache:
           keys:
             - v4-dependencies-{{ checksum "Gemfile.lock" }}
