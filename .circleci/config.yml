@@ -33,6 +33,7 @@ jobs:
           name: Run test
           command: |
             mkdir -p tmp/coverage
+            sudo dockerd
             sudo docker-compose -f docker-compose.ci.yml build
             sudo docker-compose -f docker-compose.ci.yml run rspec bin/test
             sudo chown -R circleci:circleci vendor/bundle
