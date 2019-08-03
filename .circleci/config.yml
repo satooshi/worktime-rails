@@ -4,14 +4,15 @@ orbs:
   docker: circleci/docker@0.5.13
 jobs:
   test-rails-api:
-    executor:
-      name: docker/docker
-      tag: '3.6'
+    # executor:
+    #   name: docker/docker
+    #   tag: '3.6'
     working_directory: ~/repo
     steps:
       - checkout
       - docker/install-docker-tools
       - setup_remote_docker
+          docker_layer_caching: true
       - restore_cache:
           keys:
             - v4-dependencies-{{ checksum "Gemfile.lock" }}
@@ -23,6 +24,9 @@ jobs:
       - run:
           name: Versions
           command: |
+            env | sort
+            which docker
+            which docker-compose
             /usr/bin/docker --version
             /usr/bin/docker-compose --version
       - run:
