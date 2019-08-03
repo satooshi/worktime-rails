@@ -40,6 +40,7 @@ jobs:
           name: Run test
           command: |
             mkdir -p tmp/coverage
+            ls -l *
             docker-compose -f docker-compose.ci.yml build
             docker-compose -f docker-compose.ci.yml run rspec pwd
             docker-compose -f docker-compose.ci.yml run rspec ls -l
